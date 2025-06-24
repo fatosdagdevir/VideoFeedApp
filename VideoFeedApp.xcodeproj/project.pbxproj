@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BB2703A12E0AFCEF00A5F9A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB27039C2E0AFCEF00A5F9A4 /* Assets.xcassets */; };
+		BB2703A22E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703912E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift */; };
+		BB2703A32E0AFCEF00A5F9A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703982E0AFCEF00A5F9A4 /* ContentView.swift */; };
+		BB2703A62E0AFCF300A5F9A4 /* VideoFeedAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BB27032B2E0AF44D00A5F9A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,25 +34,11 @@
 		BB27031D2E0AF44C00A5F9A4 /* VideoFeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoFeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB27032A2E0AF44D00A5F9A4 /* VideoFeedAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoFeedAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2703342E0AF44D00A5F9A4 /* VideoFeedAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoFeedAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2703912E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAppApp.swift; sourceTree = "<group>"; };
+		BB2703982E0AFCEF00A5F9A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB27039C2E0AFCEF00A5F9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAppTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BB27031F2E0AF44C00A5F9A4 /* VideoFeedApp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VideoFeedApp;
-			sourceTree = "<group>";
-		};
-		BB27032D2E0AF44D00A5F9A4 /* VideoFeedAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VideoFeedAppTests;
-			sourceTree = "<group>";
-		};
-		BB2703372E0AF44D00A5F9A4 /* VideoFeedAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VideoFeedAppUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BB27031A2E0AF44C00A5F9A4 /* Frameworks */ = {
@@ -75,9 +68,8 @@
 		BB2703142E0AF44B00A5F9A4 = {
 			isa = PBXGroup;
 			children = (
-				BB27031F2E0AF44C00A5F9A4 /* VideoFeedApp */,
-				BB27032D2E0AF44D00A5F9A4 /* VideoFeedAppTests */,
-				BB2703372E0AF44D00A5F9A4 /* VideoFeedAppUITests */,
+				BB2703A02E0AFCEF00A5F9A4 /* VideoFeedApp */,
+				BB2703A52E0AFCF300A5F9A4 /* VideoFeedAppTests */,
 				BB27031E2E0AF44C00A5F9A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +82,120 @@
 				BB2703342E0AF44D00A5F9A4 /* VideoFeedAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BB2703922E0AFCEF00A5F9A4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703912E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BB2703932E0AFCEF00A5F9A4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BB2703942E0AFCEF00A5F9A4 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		BB2703952E0AFCEF00A5F9A4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703932E0AFCEF00A5F9A4 /* Network */,
+				BB2703942E0AFCEF00A5F9A4 /* Persistence */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BB2703962E0AFCEF00A5F9A4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BB2703972E0AFCEF00A5F9A4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BB2703992E0AFCEF00A5F9A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703982E0AFCEF00A5F9A4 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BB27039A2E0AFCEF00A5F9A4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703962E0AFCEF00A5F9A4 /* Domain */,
+				BB2703972E0AFCEF00A5F9A4 /* ViewModels */,
+				BB2703992E0AFCEF00A5F9A4 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BB27039B2E0AFCEF00A5F9A4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BB27039A2E0AFCEF00A5F9A4 /* Home */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		BB27039D2E0AFCEF00A5F9A4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BB27039C2E0AFCEF00A5F9A4 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BB27039E2E0AFCEF00A5F9A4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB27039D2E0AFCEF00A5F9A4 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BB27039F2E0AFCEF00A5F9A4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BB2703A02E0AFCEF00A5F9A4 /* VideoFeedApp */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703922E0AFCEF00A5F9A4 /* App */,
+				BB2703952E0AFCEF00A5F9A4 /* Core */,
+				BB27039B2E0AFCEF00A5F9A4 /* Features */,
+				BB27039E2E0AFCEF00A5F9A4 /* Resources */,
+				BB27039F2E0AFCEF00A5F9A4 /* Shared */,
+			);
+			path = VideoFeedApp;
+			sourceTree = "<group>";
+		};
+		BB2703A52E0AFCF300A5F9A4 /* VideoFeedAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */,
+			);
+			path = VideoFeedAppTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +212,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BB27031F2E0AF44C00A5F9A4 /* VideoFeedApp */,
 			);
 			name = VideoFeedApp;
 			packageProductDependencies = (
@@ -130,9 +233,6 @@
 			dependencies = (
 				BB27032C2E0AF44D00A5F9A4 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BB27032D2E0AF44D00A5F9A4 /* VideoFeedAppTests */,
-			);
 			name = VideoFeedAppTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +252,6 @@
 			);
 			dependencies = (
 				BB2703362E0AF44D00A5F9A4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BB2703372E0AF44D00A5F9A4 /* VideoFeedAppUITests */,
 			);
 			name = VideoFeedAppUITests;
 			packageProductDependencies = (
@@ -212,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2703A12E0AFCEF00A5F9A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2703A22E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift in Sources */,
+				BB2703A32E0AFCEF00A5F9A4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2703A62E0AFCF300A5F9A4 /* VideoFeedAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
