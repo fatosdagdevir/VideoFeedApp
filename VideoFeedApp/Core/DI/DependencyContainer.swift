@@ -1,4 +1,6 @@
 import Foundation
+import SwiftUI
+import Networking
 
 @MainActor
 final class DependencyContainer {

@@ -16,6 +16,8 @@
 		BB2703AC2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703AB2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift */; };
 		BB2703AF2E0C1B8700A5F9A4 /* Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703AE2E0C1B8700A5F9A4 /* Navigating.swift */; };
 		BB2703B22E0C1C2400A5F9A4 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703B12E0C1C2400A5F9A4 /* DependencyContainer.swift */; };
+		BB2703C42E0C20A100A5F9A4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = BB2703C22E0C20A100A5F9A4 /* Networking */; };
+		BB2703C52E0C20A100A5F9A4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = BB2703C32E0C20A100A5F9A4 /* Networking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2703C42E0C20A100A5F9A4 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2703C52E0C20A100A5F9A4 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,20 +114,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		BB2703942E0AFCEF00A5F9A4 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
 		BB2703952E0AFCEF00A5F9A4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				BB2703B02E0C1C1E00A5F9A4 /* DI */,
 				BB2703AD2E0C1B8000A5F9A4 /* Navigating */,
 				BB2703932E0AFCEF00A5F9A4 /* Network */,
-				BB2703942E0AFCEF00A5F9A4 /* Persistence */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -168,13 +164,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		BB27039F2E0AFCEF00A5F9A4 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		BB2703A02E0AFCEF00A5F9A4 /* VideoFeedApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +171,6 @@
 				BB2703952E0AFCEF00A5F9A4 /* Core */,
 				BB27039B2E0AFCEF00A5F9A4 /* Features */,
 				BB27039E2E0AFCEF00A5F9A4 /* Resources */,
-				BB27039F2E0AFCEF00A5F9A4 /* Shared */,
 			);
 			path = VideoFeedApp;
 			sourceTree = "<group>";
@@ -238,6 +226,7 @@
 			);
 			name = VideoFeedApp;
 			packageProductDependencies = (
+				BB2703C22E0C20A100A5F9A4 /* Networking */,
 			);
 			productName = VideoFeedApp;
 			productReference = BB27031D2E0AF44C00A5F9A4 /* VideoFeedApp.app */;
@@ -258,6 +247,7 @@
 			);
 			name = VideoFeedAppTests;
 			packageProductDependencies = (
+				BB2703C32E0C20A100A5F9A4 /* Networking */,
 			);
 			productName = VideoFeedAppTests;
 			productReference = BB27032A2E0AF44D00A5F9A4 /* VideoFeedAppTests.xctest */;
@@ -315,6 +305,9 @@
 			);
 			mainGroup = BB2703142E0AF44B00A5F9A4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BB2703C12E0C20A100A5F9A4 /* XCLocalSwiftPackageReference "Packages/Networking" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BB27031E2E0AF44C00A5F9A4 /* Products */;
 			projectDirPath = "";
@@ -687,6 +680,26 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BB2703C12E0C20A100A5F9A4 /* XCLocalSwiftPackageReference "Packages/Networking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Networking;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB2703C22E0C20A100A5F9A4 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB2703C12E0C20A100A5F9A4 /* XCLocalSwiftPackageReference "Packages/Networking" */;
+			productName = Networking;
+		};
+		BB2703C32E0C20A100A5F9A4 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB2703C12E0C20A100A5F9A4 /* XCLocalSwiftPackageReference "Packages/Networking" */;
+			productName = Networking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB2703152E0AF44B00A5F9A4 /* Project object */;
 }
