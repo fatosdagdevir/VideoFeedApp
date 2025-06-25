@@ -1,13 +1,8 @@
-//
-//  ContentView.swift
-//  VideoFeedApp
-//
-//  Created by Fatma Dagdevir on 24.06.25.
-//
-
 import SwiftUI
 
-struct ContentView: View {
+struct VideoFeedView: View {
+    @ObservedObject var viewModel: VideoFeedViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +15,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    VideoFeedView(
+        viewModel: .init(navigator: Navigator())
+    )
 }

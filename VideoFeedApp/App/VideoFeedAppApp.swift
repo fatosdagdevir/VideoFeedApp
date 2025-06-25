@@ -1,17 +1,16 @@
-//
-//  VideoFeedAppApp.swift
-//  VideoFeedApp
-//
-//  Created by Fatma Dagdevir on 24.06.25.
-//
-
 import SwiftUI
 
 @main
 struct VideoFeedAppApp: App {
+    private let container: DependencyContainer
+
+    init() {
+        self.container = DependencyContainer()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppRootView(container: container)
         }
     }
 }
