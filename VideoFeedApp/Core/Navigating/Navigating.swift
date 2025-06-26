@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum NavigationDestination: Hashable {
-    case photoDetail(id: Int)
+    case videoDetail(id: Int)
 }
 
 protocol Navigating {

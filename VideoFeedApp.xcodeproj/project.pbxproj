@@ -10,7 +10,6 @@
 		BB2703A12E0AFCEF00A5F9A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB27039C2E0AFCEF00A5F9A4 /* Assets.xcassets */; };
 		BB2703A22E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703912E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift */; };
 		BB2703A32E0AFCEF00A5F9A4 /* VideoFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703982E0AFCEF00A5F9A4 /* VideoFeedView.swift */; };
-		BB2703A62E0AFCF300A5F9A4 /* VideoFeedAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */; };
 		BB2703A82E0C1AE700A5F9A4 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703A72E0C1AE700A5F9A4 /* AppRootView.swift */; };
 		BB2703AA2E0C1B1F00A5F9A4 /* VideoFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703A92E0C1B1F00A5F9A4 /* VideoFeedCoordinator.swift */; };
 		BB2703AC2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703AB2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift */; };
@@ -29,6 +28,12 @@
 		BBDDA7AD2E0D4D4D001FB4E4 /* VideoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AC2E0D4D4D001FB4E4 /* VideoDTO.swift */; };
 		BBDDA7AF2E0D4D63001FB4E4 /* CreatorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AE2E0D4D63001FB4E4 /* CreatorDTO.swift */; };
 		BBDDA7B22E0D4EC9001FB4E4 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7B12E0D4EC9001FB4E4 /* AppConstants.swift */; };
+		BBDDA7D42E0D80D4001FB4E4 /* MockVideoFeedAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7CB2E0D80D4001FB4E4 /* MockVideoFeedAPIService.swift */; };
+		BBDDA7D52E0D80D4001FB4E4 /* VideoFeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7CD2E0D80D4001FB4E4 /* VideoFeedViewModelTests.swift */; };
+		BBDDA7D92E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7D02E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift */; };
+		BBDDA7DA2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7CF2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift */; };
+		BBDDA7DC2E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7C52E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift */; };
+		BBDDA7E22E0D9C26001FB4E4 /* MockNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7E12E0D9C26001FB4E4 /* MockNavigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +60,6 @@
 		BB2703912E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAppApp.swift; sourceTree = "<group>"; };
 		BB2703982E0AFCEF00A5F9A4 /* VideoFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedView.swift; sourceTree = "<group>"; };
 		BB27039C2E0AFCEF00A5F9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAppTests.swift; sourceTree = "<group>"; };
 		BB2703A72E0C1AE700A5F9A4 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
 		BB2703A92E0C1B1F00A5F9A4 /* VideoFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedCoordinator.swift; sourceTree = "<group>"; };
 		BB2703AB2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +76,12 @@
 		BBDDA7AD2E0C9900001FB4E4 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		BBDDA7AE2E0D4D63001FB4E4 /* CreatorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorDTO.swift; sourceTree = "<group>"; };
 		BBDDA7B12E0D4EC9001FB4E4 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		BBDDA7C52E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVideoFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		BBDDA7CB2E0D80D4001FB4E4 /* MockVideoFeedAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoFeedAPIService.swift; sourceTree = "<group>"; };
+		BBDDA7CD2E0D80D4001FB4E4 /* VideoFeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewModelTests.swift; sourceTree = "<group>"; };
+		BBDDA7CF2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAPIServiceTests.swift; sourceTree = "<group>"; };
+		BBDDA7D02E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedMockDataManagerTests.swift; sourceTree = "<group>"; };
+		BBDDA7E12E0D9C26001FB4E4 /* MockNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +216,8 @@
 		BB2703A52E0AFCF300A5F9A4 /* VideoFeedAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				BB2703A42E0AFCF300A5F9A4 /* VideoFeedAppTests.swift */,
+				BBDDA7DF2E0D9C17001FB4E4 /* Core */,
+				BBDDA7DD2E0D81AE001FB4E4 /* Features */,
 			);
 			path = VideoFeedAppTests;
 			sourceTree = "<group>";
@@ -304,6 +315,58 @@
 				BBDDA7AB2E0D4D43001FB4E4 /* DTOs */,
 			);
 			path = "Video Feed";
+			sourceTree = "<group>";
+		};
+		BBDDA7CC2E0D80D4001FB4E4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7CB2E0D80D4001FB4E4 /* MockVideoFeedAPIService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		BBDDA7D12E0D80D4001FB4E4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7CF2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift */,
+				BBDDA7D02E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift */,
+				BBDDA7CC2E0D80D4001FB4E4 /* Mocks */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BBDDA7DD2E0D81AE001FB4E4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7DE2E0D81B4001FB4E4 /* Video Feed */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		BBDDA7DE2E0D81B4001FB4E4 /* Video Feed */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7CD2E0D80D4001FB4E4 /* VideoFeedViewModelTests.swift */,
+				BBDDA7C52E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift */,
+			);
+			path = "Video Feed";
+			sourceTree = "<group>";
+		};
+		BBDDA7DF2E0D9C17001FB4E4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7D12E0D80D4001FB4E4 /* Services */,
+				BBDDA7E02E0D9C1D001FB4E4 /* Mocks */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BBDDA7E02E0D9C1D001FB4E4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7E12E0D9C26001FB4E4 /* MockNavigator.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,7 +535,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB2703A62E0AFCF300A5F9A4 /* VideoFeedAppTests.swift in Sources */,
+				BBDDA7D42E0D80D4001FB4E4 /* MockVideoFeedAPIService.swift in Sources */,
+				BBDDA7D52E0D80D4001FB4E4 /* VideoFeedViewModelTests.swift in Sources */,
+				BBDDA7D92E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift in Sources */,
+				BBDDA7DA2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift in Sources */,
+				BBDDA7DC2E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift in Sources */,
+				BBDDA7E22E0D9C26001FB4E4 /* MockNavigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
