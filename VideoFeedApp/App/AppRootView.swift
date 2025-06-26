@@ -12,7 +12,8 @@ struct AppRootView: View {
     var body: some View {
         NavigationStack(path: $navigator.path) {
             VideoFeedCoordinator(
-                navigator: navigator
+                navigator: navigator,
+                apiService: container.videoFeedAPIService
             )
         }
     }

@@ -1,0 +1,69 @@
+{
+  "videos": [
+    {
+      "id": "100",
+      "creator": {
+        "id": "user1",
+        "name": "John Doe",
+        "avatarURL": "https://example.com/avatar1.jpg"
+      },
+      "shortVideoURL": "https://example.com/short1.mp4",
+      "fullVideoURL": "https://example.com/full1.mp4",
+      "description": "Amazing sunset timelapse 🌅 #sunset #nature",
+      "likes": 1234,
+      "comments": 89
+    },
+    {
+      "id": "101",
+      "creator": {
+        "id": "user2",
+        "name": "Jane Smith",
+        "avatarURL": "https://example.com/avatar2.jpg"
+      },
+      "shortVideoURL": "https://example.com/short2.mp4",
+      "fullVideoURL": "https://example.com/full2.mp4",
+      "description": "Quick cooking tips! 👨‍🍳 #cooking #tips #food",
+      "likes": 567,
+      "comments": 45
+    },
+    {
+      "id": "102",
+      "creator": {
+        "id": "user3",
+        "name": "Tech Guru",
+        "avatarURL": "https://example.com/avatar3.jpg"
+      },
+      "shortVideoURL": "https://example.com/short3.mp4",
+      "fullVideoURL": "https://example.com/full3.mp4",
+      "description": "Latest iPhone features explained 📱 #tech #iPhone",
+      "likes": 2345,
+      "comments": 156
+    },
+    {
+      "id": "103",
+      "creator": {
+        "id": "user4",
+        "name": "Fitness Coach",
+        "avatarURL": "https://example.com/avatar4.jpg"
+      },
+      "shortVideoURL": "https://example.com/short4.mp4",
+      "fullVideoURL": "https://example.com/full4.mp4",
+      "description": "5-minute morning workout 💪 #fitness #workout #health",
+      "likes": 892,
+      "comments": 67
+    },
+    {
+      "id": "104",
+      "creator": {
+        "id": "user5",
+        "name": "Art Creator",
+        "avatarURL": "https://example.com/avatar5.jpg"
+      },
+      "shortVideoURL": "https://example.com/short5.mp4",
+      "fullVideoURL": "https://example.com/full5.mp4",
+      "description": "Digital art speedrun ✨ #art #digital #creative",
+      "likes": 445,
+      "comments": 32
+    }
+  ]
+} 

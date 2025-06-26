@@ -18,6 +18,17 @@
 		BB2703B22E0C1C2400A5F9A4 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2703B12E0C1C2400A5F9A4 /* DependencyContainer.swift */; };
 		BB2703C42E0C20A100A5F9A4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = BB2703C22E0C20A100A5F9A4 /* Networking */; };
 		BB2703C52E0C20A100A5F9A4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = BB2703C32E0C20A100A5F9A4 /* Networking */; };
+		BBDDA7A12E0C9500001FB4E4 /* VideoFeedAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A22E0C9500001FB4E4 /* VideoFeedAPIService.swift */; };
+		BBDDA7A22E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A12E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift */; };
+		BBDDA7A32E0C9600001FB4E4 /* video_feed_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = BBDDA7A42E0C9600001FB4E4 /* video_feed_mock.json */; };
+		BBDDA7A52E0C9600001FB4E4 /* more_videos_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = BBDDA7A62E0C9600001FB4E4 /* more_videos_mock.json */; };
+		BBDDA7A72E0C9700001FB4E4 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A82E0C9700001FB4E4 /* APIConfiguration.swift */; };
+		BBDDA7A72E0CA0FA001FB4E4 /* FetchVideoFeedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A62E0CA0FA001FB4E4 /* FetchVideoFeedUseCase.swift */; };
+		BBDDA7AA2E0C9900001FB4E4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AB2E0C9900001FB4E4 /* Video.swift */; };
+		BBDDA7AC2E0C9900001FB4E4 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AD2E0C9900001FB4E4 /* Creator.swift */; };
+		BBDDA7AD2E0D4D4D001FB4E4 /* VideoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AC2E0D4D4D001FB4E4 /* VideoDTO.swift */; };
+		BBDDA7AF2E0D4D63001FB4E4 /* CreatorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7AE2E0D4D63001FB4E4 /* CreatorDTO.swift */; };
+		BBDDA7B22E0D4EC9001FB4E4 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7B12E0D4EC9001FB4E4 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,17 @@
 		BB2703AB2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewModel.swift; sourceTree = "<group>"; };
 		BB2703AE2E0C1B8700A5F9A4 /* Navigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigating.swift; sourceTree = "<group>"; };
 		BB2703B12E0C1C2400A5F9A4 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		BBDDA7A12E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedMockDataManager.swift; sourceTree = "<group>"; };
+		BBDDA7A22E0C9500001FB4E4 /* VideoFeedAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAPIService.swift; sourceTree = "<group>"; };
+		BBDDA7A42E0C9600001FB4E4 /* video_feed_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = video_feed_mock.json; sourceTree = "<group>"; };
+		BBDDA7A62E0C9600001FB4E4 /* more_videos_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = more_videos_mock.json; sourceTree = "<group>"; };
+		BBDDA7A62E0CA0FA001FB4E4 /* FetchVideoFeedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVideoFeedUseCase.swift; sourceTree = "<group>"; };
+		BBDDA7A82E0C9700001FB4E4 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		BBDDA7AB2E0C9900001FB4E4 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BBDDA7AC2E0D4D4D001FB4E4 /* VideoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDTO.swift; sourceTree = "<group>"; };
+		BBDDA7AD2E0C9900001FB4E4 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
+		BBDDA7AE2E0D4D63001FB4E4 /* CreatorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorDTO.swift; sourceTree = "<group>"; };
+		BBDDA7B12E0D4EC9001FB4E4 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,19 +129,21 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		BB2703932E0AFCEF00A5F9A4 /* Network */ = {
+		BB2703932E0AFCEF00A5F9A4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDA7B32E0D5141001FB4E4 /* Video Feed */,
 			);
-			path = Network;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		BB2703952E0AFCEF00A5F9A4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDA7B02E0D4EBE001FB4E4 /* Constants */,
 				BB2703B02E0C1C1E00A5F9A4 /* DI */,
 				BB2703AD2E0C1B8000A5F9A4 /* Navigating */,
-				BB2703932E0AFCEF00A5F9A4 /* Network */,
+				BB2703932E0AFCEF00A5F9A4 /* Services */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -127,6 +151,8 @@
 		BB2703962E0AFCEF00A5F9A4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDA7A52E0CA0ED001FB4E4 /* UseCases */,
+				BBDDA7A82E0CA100001FB4E4 /* DOs */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -160,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				BB27039D2E0AFCEF00A5F9A4 /* Assets */,
+				BBDDA7A92E0C9800001FB4E4 /* MockData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,6 +194,7 @@
 		BB2703A02E0AFCEF00A5F9A4 /* VideoFeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDA79D2E0C9458001FB4E4 /* Shared */,
 				BB2703922E0AFCEF00A5F9A4 /* App */,
 				BB2703952E0AFCEF00A5F9A4 /* Core */,
 				BB27039B2E0AFCEF00A5F9A4 /* Features */,
@@ -207,6 +235,75 @@
 				BB2703982E0AFCEF00A5F9A4 /* VideoFeedView.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		BBDDA79D2E0C9458001FB4E4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA79F2E0C9466001FB4E4 /* Extensions */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BBDDA79F2E0C9466001FB4E4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBDDA7A52E0CA0ED001FB4E4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7A62E0CA0FA001FB4E4 /* FetchVideoFeedUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		BBDDA7A82E0CA100001FB4E4 /* DOs */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7AB2E0C9900001FB4E4 /* Video.swift */,
+				BBDDA7AD2E0C9900001FB4E4 /* Creator.swift */,
+			);
+			path = DOs;
+			sourceTree = "<group>";
+		};
+		BBDDA7A92E0C9800001FB4E4 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7A42E0C9600001FB4E4 /* video_feed_mock.json */,
+				BBDDA7A62E0C9600001FB4E4 /* more_videos_mock.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		BBDDA7AB2E0D4D43001FB4E4 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7AC2E0D4D4D001FB4E4 /* VideoDTO.swift */,
+				BBDDA7AE2E0D4D63001FB4E4 /* CreatorDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		BBDDA7B02E0D4EBE001FB4E4 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7B12E0D4EC9001FB4E4 /* AppConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		BBDDA7B32E0D5141001FB4E4 /* Video Feed */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7A82E0C9700001FB4E4 /* APIConfiguration.swift */,
+				BBDDA7A22E0C9500001FB4E4 /* VideoFeedAPIService.swift */,
+				BBDDA7A12E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift */,
+				BBDDA7AB2E0D4D43001FB4E4 /* DTOs */,
+			);
+			path = "Video Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +423,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2703A12E0AFCEF00A5F9A4 /* Assets.xcassets in Resources */,
+				BBDDA7A32E0C9600001FB4E4 /* video_feed_mock.json in Resources */,
+				BBDDA7A52E0C9600001FB4E4 /* more_videos_mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,10 +452,19 @@
 				BB2703B22E0C1C2400A5F9A4 /* DependencyContainer.swift in Sources */,
 				BB2703AA2E0C1B1F00A5F9A4 /* VideoFeedCoordinator.swift in Sources */,
 				BB2703AF2E0C1B8700A5F9A4 /* Navigating.swift in Sources */,
+				BBDDA7B22E0D4EC9001FB4E4 /* AppConstants.swift in Sources */,
 				BB2703A22E0AFCEF00A5F9A4 /* VideoFeedAppApp.swift in Sources */,
 				BB2703A82E0C1AE700A5F9A4 /* AppRootView.swift in Sources */,
+				BBDDA7A72E0CA0FA001FB4E4 /* FetchVideoFeedUseCase.swift in Sources */,
+				BBDDA7AF2E0D4D63001FB4E4 /* CreatorDTO.swift in Sources */,
+				BBDDA7AD2E0D4D4D001FB4E4 /* VideoDTO.swift in Sources */,
 				BB2703AC2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift in Sources */,
 				BB2703A32E0AFCEF00A5F9A4 /* VideoFeedView.swift in Sources */,
+				BBDDA7A22E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift in Sources */,
+				BBDDA7A12E0C9500001FB4E4 /* VideoFeedAPIService.swift in Sources */,
+				BBDDA7A72E0C9700001FB4E4 /* APIConfiguration.swift in Sources */,
+				BBDDA7AA2E0C9900001FB4E4 /* Video.swift in Sources */,
+				BBDDA7AC2E0C9900001FB4E4 /* Creator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

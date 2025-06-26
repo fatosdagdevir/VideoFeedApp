@@ -1,0 +1,56 @@
+{
+  "videos": [
+    {
+      "id": "200",
+      "creator": {
+        "id": "user6",
+        "name": "Travel Vlogger",
+        "avatarURL": "https://example.com/avatar6.jpg"
+      },
+      "shortVideoURL": "https://example.com/short6.mp4",
+      "fullVideoURL": "https://example.com/full6.mp4",
+      "description": "Hidden gems in Tokyo 🇯🇵 #travel #tokyo #japan",
+      "likes": 567,
+      "comments": 89
+    },
+    {
+      "id": "201",
+      "creator": {
+        "id": "user7",
+        "name": "Music Producer",
+        "avatarURL": "https://example.com/avatar7.jpg"
+      },
+      "shortVideoURL": "https://example.com/short7.mp4",
+      "fullVideoURL": "https://example.com/full7.mp4",
+      "description": "Beat making process in 60 seconds 🎵 #music #production",
+      "likes": 324,
+      "comments": 56
+    },
+    {
+      "id": "202",
+      "creator": {
+        "id": "user8",
+        "name": "Comedy Creator",
+        "avatarURL": "https://example.com/avatar8.jpg"
+      },
+      "shortVideoURL": "https://example.com/short8.mp4",
+      "fullVideoURL": "https://example.com/full8.mp4",
+      "description": "When you forget your password 😂 #comedy #relatable #funny",
+      "likes": 1156,
+      "comments": 234
+    },
+    {
+      "id": "203",
+      "creator": {
+        "id": "user9",
+        "name": "Pet Owner",
+        "avatarURL": "https://example.com/avatar9.jpg"
+      },
+      "shortVideoURL": "https://example.com/short9.mp4",
+      "fullVideoURL": "https://example.com/full9.mp4",
+      "description": "My cat's morning routine 🐱 #cats #pets #cute",
+      "likes": 2341,
+      "comments": 167
+    }
+  ]
+} 

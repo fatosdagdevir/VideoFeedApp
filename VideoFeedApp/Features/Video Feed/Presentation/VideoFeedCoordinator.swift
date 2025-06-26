@@ -6,11 +6,13 @@ struct VideoFeedCoordinator: View {
     @StateObject private var viewModel: VideoFeedViewModel
     
     init(
-        navigator: Navigator
+        navigator: Navigator,
+        apiService: VideoFeedAPIServiceProtocol
     ) {
         self.navigator = navigator
         self._viewModel = StateObject(wrappedValue: VideoFeedViewModel(
-            navigator: navigator
+            navigator: navigator,
+            fetchVideosUseCase: FetchVideoFeedUseCase(service: apiService)
         ))
     }
     

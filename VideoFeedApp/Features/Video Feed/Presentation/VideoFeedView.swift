@@ -11,11 +11,17 @@ struct VideoFeedView: View {
             Text("Hello, world!")
         }
         .padding()
+        .task {
+            await viewModel.loadVideoFeed()
+        }
     }
 }
 
 #Preview {
     VideoFeedView(
-        viewModel: .init(navigator: Navigator())
+        viewModel: .init(
+            navigator: Navigator(),
+            fetchVideosUseCase: FetchVideoFeedUseCase(service: VideoFeedAPIService())
+        )
     )
 }
