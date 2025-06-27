@@ -34,8 +34,13 @@ final class VideoFeedViewModel: ObservableObject {
         do {
             let (videos, newCursor) = try await fetchVideosUseCase.fetchVideoFeed(cursor: nextCursor, limit: videoBatchLimit)
             self.allVideos.append(contentsOf: videos)
-            viewState = .ready(videos: allVideos)
-            self.nextCursor = newCursor
+            
+            if allVideos.isEmpty {
+                viewState = .empty
+            } else {
+                viewState = .ready(videos: allVideos)
+                self.nextCursor = newCursor
+            }
         } catch {
             handleError(error)
         }

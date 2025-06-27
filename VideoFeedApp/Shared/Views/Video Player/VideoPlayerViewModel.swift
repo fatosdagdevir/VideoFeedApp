@@ -22,24 +22,24 @@ class VideoPlayerViewModel: ObservableObject {
     
     // MARK: - Public Methods
     func setupPlayer() {
-        Task { @MainActor in
-            viewState = .loading
-            
-            guard let url = URL(string: video.shortVideoURL) else {
-                viewState = .error
-                return
-            }
-            
-            let newPlayer = AVPlayer(url: url)
-            self.player = newPlayer
-            
-            newPlayer.automaticallyWaitsToMinimizeStalling = false
-            newPlayer.volume = 1.0
-            
+        viewState = .loading
+        
+        guard let url = URL(string: video.shortVideoURL) else {
+            viewState = .error
+            return
+        }
+        
+        let newPlayer = AVPlayer(url: url)
+        self.player = newPlayer
+        
+        newPlayer.automaticallyWaitsToMinimizeStalling = false
+        newPlayer.volume = 1.0
+        
+        Task {
             await self.loadVideo()
         }
     }
-
+    
     
     func playVideo() {
         guard let player = player, !isError else { return }

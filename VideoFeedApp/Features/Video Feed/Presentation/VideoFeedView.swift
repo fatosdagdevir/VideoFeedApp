@@ -6,6 +6,7 @@ struct VideoFeedView: View {
     enum ViewState: Equatable {
         case loading
         case ready(videos: [Video])
+        case empty
         case error(viewModel: ErrorViewModel)
     }
     
@@ -28,6 +29,10 @@ struct VideoFeedView: View {
                 ProgressView()
             case .ready(let videos):
                 content(videos)
+            case .empty:
+                VStack {
+                    Text("No videos available")
+                }
             case .error(let viewModel):
                 ErrorView(viewModel: viewModel)
             }

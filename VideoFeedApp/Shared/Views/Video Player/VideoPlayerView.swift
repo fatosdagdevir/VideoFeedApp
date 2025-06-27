@@ -38,9 +38,7 @@ struct VideoPlayerView: View {
             }
         }
         .onAppear {
-            Task { @MainActor in
-                viewModel.setupPlayer()
-            }
+            viewModel.setupPlayer()
         }
     }
     
@@ -87,9 +85,7 @@ struct VideoPlayerView: View {
                         .foregroundColor(.white.opacity(0.8))
                     
                     Button("Retry") {
-                        Task { @MainActor in
-                            viewModel.setupPlayer()
-                        }
+                        viewModel.setupPlayer()
                     }
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
