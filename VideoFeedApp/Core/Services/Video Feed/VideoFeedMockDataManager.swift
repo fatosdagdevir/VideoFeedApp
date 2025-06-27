@@ -48,11 +48,9 @@ final class VideoFeedMockDataManager: VideoFeedMockDataManaging {
             startIndex = 0
         }
         
-        // Get the slice for this "page"
-        let slice = allVideos.dropFirst(startIndex).prefix(limit)
-        let videosPage = Array(slice)
+        let selectionOfVideos = allVideos.dropFirst(startIndex).prefix(limit)
+        let videosPage = Array(selectionOfVideos)
         
-        // Determine nextCursor
         let nextCursor = videosPage.last.map { $0.id }
         
         return (videosPage, nextCursor)

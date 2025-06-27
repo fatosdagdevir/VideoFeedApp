@@ -23,7 +23,7 @@ struct VideoPlayerView: View {
     init(video: Video, isPlaying: Bool) {
         self.video = video
         self.isPlaying = isPlaying
-        self._viewModel = StateObject(wrappedValue: VideoPlayerViewModel(video: video, isPlaying: isPlaying))
+        self._viewModel = StateObject(wrappedValue: VideoPlayerViewModel(video: video))
     }
     
     var body: some View {

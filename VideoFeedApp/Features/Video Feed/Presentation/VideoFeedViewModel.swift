@@ -11,10 +11,11 @@ final class VideoFeedViewModel: ObservableObject {
     private var lastVideoId: String?
     private var nextCursor: String?
     private var allVideos: [Video] = []
+    private let videoBatchLimit = 5 // Limit is 5 instead of 20 because couldn't find lots of videos
     
     // MARK: - Public Properties
     var nextPageAvailable: Bool {
-        if let nextCursor, nextCursor.isEmpty {
+        guard let nextCursor, !nextCursor.isEmpty else {
             return false
         }
         return true
@@ -31,19 +32,16 @@ final class VideoFeedViewModel: ObservableObject {
     // MARK: - Public Methods
     func loadVideoFeed() async {
         do {
-            let (videos, newCursor) = try await fetchVideosUseCase.fetchVideoFeed(cursor: nextCursor, limit: 5)
-            viewState = .ready(videos: videos)
+            let (videos, newCursor) = try await fetchVideosUseCase.fetchVideoFeed(cursor: nextCursor, limit: videoBatchLimit)
             self.allVideos.append(contentsOf: videos)
+            viewState = .ready(videos: allVideos)
             self.nextCursor = newCursor
-            
-            print("nextCursor: \(nextCursor) new video count: \(videos.count) video count: \(allVideos.count)")
         } catch {
             handleError(error)
         }
     }
     
     func loadMore() async {
-        print("LOAD MORE...")
         if nextPageAvailable {
            await loadVideoFeed()
         }

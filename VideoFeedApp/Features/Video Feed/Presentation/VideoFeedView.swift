@@ -19,6 +19,7 @@ struct VideoFeedView: View {
     
     @ObservedObject var viewModel: VideoFeedViewModel
     @State private var visibleIndex: Int = 0
+    @State private var isLoadingMore: Bool = false
     
     var body: some View {
         Group {
@@ -62,15 +63,11 @@ struct VideoFeedView: View {
                 }
                 .scrollTargetLayout()
                 
-                Rectangle()
-                    .frame(height: 100)
-                    .background(Color.yellow)
-                if viewModel.nextPageAvailable {
+                if viewModel.nextPageAvailable || isLoadingMore {
                     ProgressView()
-                        .task {
-                            await viewModel.loadMore()
-                        }
-                        .frame(maxWidth: .infinity)
+                        .tint(.white)
+                        .frame(maxWidth: .infinity, minHeight: 100)
+                        .scaleEffect(1.2)
                 }
             }
             .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
@@ -78,8 +75,17 @@ struct VideoFeedView: View {
             .onPreferenceChange(VisibleIndexPreferenceKey.self) { values in
                 if let (index, _) = values.min(by: { $0.value < $1.value }) {
                     visibleIndex = index
+                    // Trigger pagination when the last video becomes visible
+                    if index == videos.count - 1 && viewModel.nextPageAvailable && !isLoadingMore {
+                        isLoadingMore = true
+                        Task {
+                            await viewModel.loadMore()
+                            isLoadingMore = false
+                        }
+                    }
                 }
             }
+
         }
     }
     
@@ -162,3 +168,5 @@ private struct VisibleIndexPreferenceKey: PreferenceKey {
         value.merge(nextValue(), uniquingKeysWith: { $1 })
     }
 }
+
+
