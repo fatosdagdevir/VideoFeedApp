@@ -3,7 +3,7 @@ import Foundation
 @MainActor
 final class VideoFeedViewModel: ObservableObject {
     // MARK: - Published Properties
-    @Published var videos: [Video] = []
+    @Published var viewState: VideoFeedView.ViewState = .loading
     
     // MARK: - Private Properties
     private let navigator: Navigating
@@ -21,10 +21,28 @@ final class VideoFeedViewModel: ObservableObject {
     // MARK: - Public Methods
     func loadVideoFeed() async {
         do {
-            let result = try await fetchVideosUseCase.fetchVideoFeed()
-            self.videos = result
+            let videos = try await fetchVideosUseCase.fetchVideoFeed()
+            viewState = .ready(videos: videos)
         } catch {
-            print("❌ Failed to load videos: \(error)")
+            handleError(error)
         }
+    }
+    
+    func refresh() async {
+        viewState = .loading
+        
+        await loadVideoFeed()
+    }
+    
+    //MARK: Private Helpers
+    private func handleError(_ error: Error) {
+        viewState = .error(
+            viewModel: ErrorViewModel(
+                error: error,
+                action: {  [weak self] in
+                    await self?.refresh()
+                }
+            )
+        )
     }
 }

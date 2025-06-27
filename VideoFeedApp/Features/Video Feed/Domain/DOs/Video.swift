@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Video Domain Model
-struct Video: Identifiable {
+struct Video: Identifiable, Equatable {
     let id: String
     let creator: Creator
     let shortVideoURL: String

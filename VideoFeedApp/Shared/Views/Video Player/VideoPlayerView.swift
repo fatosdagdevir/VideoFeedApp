@@ -2,6 +2,20 @@ import SwiftUI
 import AVKit
 
 struct VideoPlayerView: View {
+    enum ViewState: Equatable {
+        case loading
+        case playing
+        case error
+    }
+    
+    private enum Layout {
+        enum ErrorView {
+            static let vSpacing: CGFloat = 12
+            static let buttonHPadding: CGFloat = 16
+            static let buttonVPadding: CGFloat = 8
+        }
+    }
+    
     let video: Video
     let isCurrentVideo: Bool
     @StateObject private var viewModel: VideoPlayerViewModel
@@ -13,38 +27,14 @@ struct VideoPlayerView: View {
     }
     
     var body: some View {
-        ZStack {
-            // Video Player
-            if let player = viewModel.player, !viewModel.hasError {
-                VideoPlayer(player: player)
-                    .aspectRatio(contentMode: .fill)
-                    .onTapGesture {
-                        Task { @MainActor in
-                            viewModel.toggleControls()
-                        }
-                    }
-            } else if viewModel.hasError {
-                // Error state
-                VideoErrorView(
-                    videoURL: video.shortVideoURL,
-                    onRetry: { 
-                        Task { @MainActor in
-                            viewModel.setupPlayer()
-                        }
-                    }
-                )
-            } else {
-                // Loading placeholder
-                VideoLoadingView()
-            }
-        }
-        .onChange(of: isCurrentVideo) { _, newValue in
-            Task { @MainActor in
-                if newValue {
-                    viewModel.playVideo()
-                } else {
-                    viewModel.pauseVideo()
-                }
+        Group {
+            switch viewModel.viewState {
+            case .loading:
+                loadingView
+            case .playing:
+                player
+            case .error:
+                errorView
             }
         }
         .onAppear {
@@ -52,44 +42,18 @@ struct VideoPlayerView: View {
                 viewModel.setupPlayer()
             }
         }
-        .onDisappear {
-            Task { @MainActor in
-                viewModel.cleanupPlayer()
+    }
+    
+    private var player: some View {
+        Group {
+            if let player = viewModel.player {
+                VideoPlayer(player: player)
+                    .aspectRatio(contentMode: .fill)
             }
         }
     }
-}
-
-// MARK: - Supporting Views
-
-struct VideoErrorView: View {
-    let videoURL: String
-    let onRetry: () -> Void
     
-    var body: some View {
-        Color.black
-            .overlay(
-                VStack(spacing: 12) {
-                    Text("Video unavailable")
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.white.opacity(0.8))
-                    
-                    Button("Retry") {
-                        onRetry()
-                    }
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.black)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .background(Color.white)
-                    .clipShape(Capsule())
-                }
-            )
-    }
-}
-
-struct VideoLoadingView: View {
-    var body: some View {
+    private var loadingView: some View {
         Color.black
             .overlay(
                 VStack(spacing: 12) {
@@ -103,46 +67,28 @@ struct VideoLoadingView: View {
                 }
             )
     }
-}
-
-struct VideoControlsOverlay: View {
-    let isPlaying: Bool
-    let currentTime: Double
-    let duration: Double
-    let onPlayPause: () -> Void
     
-    var body: some View {
-        VStack {
-            Spacer()
-            
-            HStack(alignment: .bottom) {
-                // Left side - Play/pause and quality controls
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack {
-                        Button {
-                            onPlayPause()
-                        } label: {
-                            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                                .font(.system(size: 32))
-                                .foregroundColor(.white)
-                                .shadow(color: .black.opacity(0.8), radius: 2)
+    private var errorView: some View {
+        Color.black
+            .overlay(
+                VStack(spacing: Layout.ErrorView.vSpacing) {
+                    Text("Video unavailable")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.white.opacity(0.8))
+                    
+                    Button("Retry") {
+                        Task { @MainActor in
+                            viewModel.setupPlayer()
                         }
-                        
-                        Text("Full")
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color.white.opacity(0.2))
-                            .clipShape(Capsule())
-                        
-                        Spacer()
                     }
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black)
+                    .padding(.horizontal, Layout.ErrorView.buttonHPadding)
+                    .padding(.vertical, Layout.ErrorView.buttonVPadding)
+                    .background(Color.white)
+                    .clipShape(Capsule())
                 }
-                
-                Spacer()
-            }
-        }
+            )
     }
 }
 
@@ -159,4 +105,4 @@ struct VideoControlsOverlay: View {
         ),
         isCurrentVideo: true
     )
-} 
+}
