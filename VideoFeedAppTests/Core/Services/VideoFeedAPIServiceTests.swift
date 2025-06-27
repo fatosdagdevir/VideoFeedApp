@@ -10,7 +10,7 @@ struct VideoFeedAPIServiceTests {
         let apiService = VideoFeedAPIService()
         
         // When
-        let videos = try await apiService.fetchVideoFeed()
+        let (videos, _) = try await apiService.fetchVideoFeed(cursor: nil, limit: 5)
         
         // Then
         #expect(videos.count == 5) // Expected from video_feed_mock.json
@@ -25,7 +25,7 @@ struct VideoFeedAPIServiceTests {
         let apiService = VideoFeedAPIService()
         
         // When
-        let videos = try await apiService.fetchVideoFeed()
+        let (videos, _) = try await apiService.fetchVideoFeed(cursor: nil, limit: 5)
         
         // Then
         for video in videos {

@@ -10,7 +10,7 @@ struct VideoFeedMockDataManagerTests {
         let sut = VideoFeedMockDataManager()
         
         // When
-        let videos = try sut.loadVideoFeedResponse()
+        let (videos, _) = try sut.loadVideoFeedResponse(fileName: "video_feed_mock", after: nil)
         
         // Then
         #expect(videos.count == 5) // Expected from video_feed_mock.json
@@ -35,7 +35,7 @@ struct VideoFeedMockDataManagerTests {
         
         // When & Then
         #expect(throws: Error.self) {
-            try sut.loadVideoFeedResponse(fileName: "nonexistent_file")
+            try sut.loadVideoFeedResponse(fileName: "nonexistent_file", after: nil)
         }
     }
 } 

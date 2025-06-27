@@ -21,6 +21,8 @@
 		BB58B4862E0DF3750073530D /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB58B4852E0DF3750073530D /* ErrorViewModel.swift */; };
 		BB58B4882E0DFB380073530D /* VideoFeedActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB58B4872E0DFB380073530D /* VideoFeedActionView.swift */; };
 		BB58B48A2E0DFD310073530D /* VideoFeedAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB58B4892E0DFD310073530D /* VideoFeedAvatarView.swift */; };
+		BB58B4922E0F3B690073530D /* ErrorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB58B48F2E0F3B690073530D /* ErrorViewModelTests.swift */; };
+		BB58B4932E0F3B690073530D /* VideoPlayerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB58B4902E0F3B690073530D /* VideoPlayerViewModelTests.swift */; };
 		BBDDA7A12E0C9500001FB4E4 /* VideoFeedAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A22E0C9500001FB4E4 /* VideoFeedAPIService.swift */; };
 		BBDDA7A22E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7A12E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift */; };
 		BBDDA7A32E0C9600001FB4E4 /* video_feed_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = BBDDA7A42E0C9600001FB4E4 /* video_feed_mock.json */; };
@@ -74,6 +76,8 @@
 		BB58B4852E0DF3750073530D /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		BB58B4872E0DFB380073530D /* VideoFeedActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedActionView.swift; sourceTree = "<group>"; };
 		BB58B4892E0DFD310073530D /* VideoFeedAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAvatarView.swift; sourceTree = "<group>"; };
+		BB58B48F2E0F3B690073530D /* ErrorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModelTests.swift; sourceTree = "<group>"; };
+		BB58B4902E0F3B690073530D /* VideoPlayerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModelTests.swift; sourceTree = "<group>"; };
 		BBDDA7A12E0C9D90001FB4E4 /* VideoFeedMockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedMockDataManager.swift; sourceTree = "<group>"; };
 		BBDDA7A22E0C9500001FB4E4 /* VideoFeedAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedAPIService.swift; sourceTree = "<group>"; };
 		BBDDA7A42E0C9600001FB4E4 /* video_feed_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = video_feed_mock.json; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			children = (
 				BBDDA7DF2E0D9C17001FB4E4 /* Core */,
 				BBDDA7DD2E0D81AE001FB4E4 /* Features */,
+				BB58B4912E0F3B690073530D /* Shared */,
 			);
 			path = VideoFeedAppTests;
 			sourceTree = "<group>";
@@ -267,6 +272,15 @@
 				BB58B4852E0DF3750073530D /* ErrorViewModel.swift */,
 			);
 			path = "Error View";
+			sourceTree = "<group>";
+		};
+		BB58B4912E0F3B690073530D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BB58B48F2E0F3B690073530D /* ErrorViewModelTests.swift */,
+				BB58B4902E0F3B690073530D /* VideoPlayerViewModelTests.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		BBDDA79D2E0C9458001FB4E4 /* Shared */ = {
@@ -584,6 +598,8 @@
 				BBDDA7D92E0D80D4001FB4E4 /* VideoFeedMockDataManagerTests.swift in Sources */,
 				BBDDA7DA2E0D80D4001FB4E4 /* VideoFeedAPIServiceTests.swift in Sources */,
 				BBDDA7DC2E0D80D4001FB4E4 /* FetchVideoFeedUseCaseTests.swift in Sources */,
+				BB58B4922E0F3B690073530D /* ErrorViewModelTests.swift in Sources */,
+				BB58B4932E0F3B690073530D /* VideoPlayerViewModelTests.swift in Sources */,
 				BBDDA7E22E0D9C26001FB4E4 /* MockNavigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

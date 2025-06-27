@@ -54,6 +54,8 @@ final class VideoFeedViewModel: ObservableObject {
     
     func refresh() async {
         viewState = .loading
+        allVideos.removeAll()
+        nextCursor = nil
         
         await loadVideoFeed()
     }
