@@ -18,7 +18,7 @@ struct VideoFeedView: View {
     }
     
     @ObservedObject var viewModel: VideoFeedViewModel
-    @State private var currentVideoIndex = 0
+    @State private var visibleIndex: Int = 0
     
     var body: some View {
         Group {
@@ -44,11 +44,19 @@ struct VideoFeedView: View {
                         videoFeedItem(
                             video: video,
                             proxy: proxy,
-                            isCurrentVideo: index == currentVideoIndex
+                            isPlaying: index == visibleIndex
                         )
                         .frame(
                             width: proxy.size.width,
                             height: proxy.size.height + (proxy.safeAreaInsets.bottom / 2)
+                        )
+                        .background(
+                            GeometryReader { innerGeo in
+                                Color.clear
+                                    .preference(key: VisibleIndexPreferenceKey.self, value: [
+                                        index: abs(innerGeo.frame(in: .global).minY)
+                                    ])
+                            }
                         )
                     }
                 }
@@ -56,19 +64,24 @@ struct VideoFeedView: View {
             }
             .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
             .background(Color.black)
+            .onPreferenceChange(VisibleIndexPreferenceKey.self) { values in
+                if let (index, _) = values.min(by: { $0.value < $1.value }) {
+                    visibleIndex = index
+                }
+            }
         }
     }
     
     private func videoFeedItem(
         video: Video,
         proxy: GeometryProxy,
-        isCurrentVideo: Bool
+        isPlaying: Bool
     ) -> some View {
         ZStack {
             
             VideoPlayerView(
                 video: video,
-                isCurrentVideo: isCurrentVideo
+                isPlaying: isPlaying
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             
@@ -130,4 +143,12 @@ struct VideoFeedView: View {
             fetchVideosUseCase: FetchVideoFeedUseCase(service: VideoFeedAPIService())
         )
     )
+}
+
+private struct VisibleIndexPreferenceKey: PreferenceKey {
+    static var defaultValue: [Int: CGFloat] = [:]
+    
+    static func reduce(value: inout [Int: CGFloat], nextValue: () -> [Int: CGFloat]) {
+        value.merge(nextValue(), uniquingKeysWith: { $1 })
+    }
 }

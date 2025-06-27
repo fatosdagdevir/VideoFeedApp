@@ -17,13 +17,13 @@ struct VideoPlayerView: View {
     }
     
     let video: Video
-    let isCurrentVideo: Bool
+    let isPlaying: Bool
     @StateObject private var viewModel: VideoPlayerViewModel
     
-    init(video: Video, isCurrentVideo: Bool) {
+    init(video: Video, isPlaying: Bool) {
         self.video = video
-        self.isCurrentVideo = isCurrentVideo
-        self._viewModel = StateObject(wrappedValue: VideoPlayerViewModel(video: video))
+        self.isPlaying = isPlaying
+        self._viewModel = StateObject(wrappedValue: VideoPlayerViewModel(video: video, isPlaying: isPlaying))
     }
     
     var body: some View {
@@ -49,6 +49,16 @@ struct VideoPlayerView: View {
             if let player = viewModel.player {
                 VideoPlayer(player: player)
                     .aspectRatio(contentMode: .fill)
+                    .onAppear {
+                        if isPlaying {
+                            player.play()
+                        } else {
+                            player.pause()
+                        }
+                    }
+                    .onChange(of: isPlaying) { _, play in
+                        play ? player.play() : player.pause()
+                    }
             }
         }
     }
@@ -61,7 +71,7 @@ struct VideoPlayerView: View {
                         .scaleEffect(1.5)
                         .tint(.white)
                     
-                    Text("Loading video...")
+                    Text("Loading video")
                         .font(.system(size: 14))
                         .foregroundColor(.white.opacity(0.8))
                 }
@@ -103,6 +113,6 @@ struct VideoPlayerView: View {
             likeCount: 100,
             commentCount: 10
         ),
-        isCurrentVideo: true
+        isPlaying: true
     )
 }

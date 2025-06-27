@@ -14,10 +14,12 @@ class VideoPlayerViewModel: ObservableObject {
         return false
     }
     private let video: Video
+    private let isPlaying: Bool
     private var cancellables = Set<AnyCancellable>()
     
-    init(video: Video) {
+    init(video: Video, isPlaying: Bool) {
         self.video = video
+        self.isPlaying = isPlaying
     }
     
     // MARK: - Public Methods
@@ -39,6 +41,7 @@ class VideoPlayerViewModel: ObservableObject {
             await self.loadVideo()
         }
     }
+
     
     func playVideo() {
         guard let player = player, !isError else { return }
@@ -71,6 +74,9 @@ class VideoPlayerViewModel: ObservableObject {
                 switch status {
                 case .readyToPlay:
                     viewState = .playing
+                    if isPlaying {
+                        player.play()
+                    }
                 case .failed, .unknown:
                     viewState = .error
                 @unknown default:
