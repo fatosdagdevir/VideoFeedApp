@@ -2,7 +2,7 @@ import Foundation
 import Networking
 
 protocol VideoFeedAPIServiceProtocol {
-    func fetchVideoFeed() async throws -> [VideoDTO]
+    func fetchVideoFeed(cursor: String?, limit: Int) async throws -> ([VideoDTO], String?)
 }
 
 final class VideoFeedAPIService: VideoFeedAPIServiceProtocol {
@@ -20,21 +20,23 @@ final class VideoFeedAPIService: VideoFeedAPIServiceProtocol {
         self.mockDataManager = mockDataManager
     }
     
-    func fetchVideoFeed() async throws -> [VideoDTO] {
+    func fetchVideoFeed(cursor: String?, limit: Int) async throws -> ([VideoDTO], String?) {
         switch config.environment {
         case .production:
-            return try await fetchFromAPI()
+            let response = try await fetchFromAPI()
+            return response
         case .mock:
             try await Task.sleep(nanoseconds: UInt64(config.simulatedDelay * 1_000_000_000))
-            return try mockDataManager.loadVideoFeedResponse()
+            return try mockDataManager.loadVideoFeedResponse(after: cursor, limit: limit)
         }
     }
     
     // MARK: - Private Methods
-    private func fetchFromAPI() async throws -> [VideoDTO] {
+    private func fetchFromAPI() async throws -> ([VideoDTO], String?) {
         let endpoint = VideoFeedEndpoint()
         let request = VideoFeedRequest(endpoint: endpoint)
-        return try await networking.send(request: request)
+        let response = try await networking.send(request: request)
+        return (response.videos, response.nextCursor)
     }
 }
 
@@ -45,11 +47,12 @@ private struct VideoFeedEndpoint: EndpointProtocol {
 }
 
 private struct VideoFeedRequest: RequestProtocol {
-    typealias Response = [VideoDTO]
+    typealias Response = VideoFeedResponse
     let endpoint: EndpointProtocol
     let method: HTTP.Method = .GET
 }
 
 struct VideoFeedResponse: Codable {
     let videos: [VideoDTO]
+    let nextCursor: String?
 }

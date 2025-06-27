@@ -61,6 +61,17 @@ struct VideoFeedView: View {
                     }
                 }
                 .scrollTargetLayout()
+                
+                Rectangle()
+                    .frame(height: 100)
+                    .background(Color.yellow)
+                if viewModel.nextPageAvailable {
+                    ProgressView()
+                        .task {
+                            await viewModel.loadMore()
+                        }
+                        .frame(maxWidth: .infinity)
+                }
             }
             .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
             .background(Color.black)
@@ -117,7 +128,6 @@ struct VideoFeedView: View {
                 .padding(.bottom, proxy.safeAreaInsets.top)
             }
         }
-        .background(Color.yellow)
     }
     
     private func caption(name: String, caption: String) -> some View {
