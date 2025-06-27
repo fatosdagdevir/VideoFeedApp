@@ -21,6 +21,7 @@ struct VideoFeedView: View {
     @ObservedObject var viewModel: VideoFeedViewModel
     @State private var visibleIndex: Int = 0
     @State private var isLoadingMore: Bool = false
+    @State private var playingIndices: Set<Int> = []
     
     var body: some View {
         Group {
@@ -50,7 +51,7 @@ struct VideoFeedView: View {
                         videoFeedItem(
                             video: video,
                             proxy: proxy,
-                            isPlaying: index == visibleIndex
+                            isPlaying: playingIndices.contains(index)
                         )
                         .frame(
                             width: proxy.size.width,
@@ -59,8 +60,11 @@ struct VideoFeedView: View {
                         .background(
                             GeometryReader { innerGeo in
                                 Color.clear
-                                    .preference(key: VisibleIndexPreferenceKey.self, value: [
-                                        index: abs(innerGeo.frame(in: .global).minY)
+                                    .preference(key: VideoVisibilityPreferenceKey.self, value: [
+                                        index: calculateVisibilityPercentage(
+                                            itemFrame: innerGeo.frame(in: .global),
+                                            screenHeight: proxy.size.height
+                                        )
                                     ])
                             }
                         )
@@ -77,9 +81,20 @@ struct VideoFeedView: View {
             }
             .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
             .background(Color.black)
-            .onPreferenceChange(VisibleIndexPreferenceKey.self) { values in
-                if let (index, _) = values.min(by: { $0.value < $1.value }) {
+            .onPreferenceChange(VideoVisibilityPreferenceKey.self) { values in
+                // Find videos that are at least 50% visible
+                let newPlayingIndices = Set(values.compactMap { (index, percentage) in
+                    percentage >= 0.5 ? index : nil
+                })
+                
+                if newPlayingIndices != playingIndices {
+                    playingIndices = newPlayingIndices
+                }
+                
+                // Update visibleIndex to the most visible video for pagination
+                if let (index, _) = values.max(by: { $0.value < $1.value }) {
                     visibleIndex = index
+                    
                     // Trigger pagination when the last video becomes visible
                     if index == videos.count - 1 && viewModel.nextPageAvailable && !isLoadingMore {
                         isLoadingMore = true
@@ -155,6 +170,18 @@ struct VideoFeedView: View {
                 .lineLimit(Layout.captionLineLimit)
         }
     }
+    
+    private func calculateVisibilityPercentage(itemFrame: CGRect, screenHeight: CGFloat) -> Double {
+        let screenBounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: screenHeight)
+        let intersection = itemFrame.intersection(screenBounds)
+        
+        guard !intersection.isNull else { return 0.0 }
+        
+        let visibleArea = intersection.height * intersection.width
+        let totalArea = itemFrame.height * itemFrame.width
+        
+        return Double(visibleArea / totalArea)
+    }
 }
 
 #Preview {
@@ -166,10 +193,10 @@ struct VideoFeedView: View {
     )
 }
 
-private struct VisibleIndexPreferenceKey: PreferenceKey {
-    static var defaultValue: [Int: CGFloat] = [:]
+private struct VideoVisibilityPreferenceKey: PreferenceKey {
+    static var defaultValue: [Int: Double] = [:]
     
-    static func reduce(value: inout [Int: CGFloat], nextValue: () -> [Int: CGFloat]) {
+    static func reduce(value: inout [Int: Double], nextValue: () -> [Int: Double]) {
         value.merge(nextValue(), uniquingKeysWith: { $1 })
     }
 }
