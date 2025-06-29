@@ -4,59 +4,38 @@ import Combine
 
 @MainActor
 class VideoPlayerViewModel: ObservableObject {
-    // MARK: - Published Properties
-    @Published var player: AVPlayer?
+    @Published var player: AVPlayer = AVPlayer()
     @Published var viewState: VideoPlayerView.ViewState = .loading
     
-    // MARK: - Private Properties
-    private  var isError: Bool {
-        if case .error = viewState { return true }
-        return false
-    }
-    private let video: Video
     private var cancellables = Set<AnyCancellable>()
+    private let video: Video
     
     init(video: Video) {
         self.video = video
     }
     
-    // MARK: - Public Methods
-    func setupPlayer() {
-        viewState = .loading
-        
+    func loadVideo(autoPlay: Bool) {
         guard let url = URL(string: video.shortVideoURL) else {
             viewState = .error
             return
         }
         
-        let newPlayer = AVPlayer(url: url)
-        self.player = newPlayer
+        viewState = .loading
         
-        newPlayer.automaticallyWaitsToMinimizeStalling = false
-        newPlayer.volume = 1.0
+        let item = AVPlayerItem(url: url)
+        player.replaceCurrentItem(with: item)
         
         Task {
-            await self.loadVideo()
+            await observeStatus(of: item, autoPlay: autoPlay)
         }
     }
     
-    
-    func playVideo() {
-        guard let player = player, !isError else { return }
-        
-        player.play()
-        viewState = .playing
+    func setPlayback(isPlaying: Bool) {
+        isPlaying ? player.play() : player.pause()
     }
     
-    func pauseVideo() {
-        guard let player = player else { return }
-        
-        player.pause()
-    }
-    
-    private func loadVideo() async {
-        guard let player = player,
-              let playerItem = player.currentItem else {
+    private func observeStatus(of item: AVPlayerItem, autoPlay: Bool) async {
+        guard let playerItem = player.currentItem else {
             viewState = .error
             return
         }
@@ -65,17 +44,18 @@ class VideoPlayerViewModel: ObservableObject {
             try? await Task.sleep(nanoseconds: 100_000_000)
         }
         
-        playerItem.publisher(for: \AVPlayerItem.status)
+        item.publisher(for: \.status)
             .receive(on: RunLoop.main)
             .sink { [weak self] status in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch status {
                 case .readyToPlay:
-                    viewState = .playing
+                    self.viewState = .playing
+                    if autoPlay { self.player.play() }
                 case .failed, .unknown:
-                    viewState = .error
+                    self.viewState = .error
                 @unknown default:
-                    viewState = .error
+                    self.viewState = .error
                 }
             }
             .store(in: &cancellables)

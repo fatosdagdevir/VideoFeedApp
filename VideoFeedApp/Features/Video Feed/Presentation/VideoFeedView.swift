@@ -45,13 +45,22 @@ struct VideoFeedView: View {
     
     private func content(_ videos: [Video]) -> some View {
         GeometryReader { proxy in
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: .zero) {
+            ScrollView(showsIndicators: false) {
+                LazyVStack(spacing: .zero) {
                     ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
                         videoFeedItem(
                             video: video,
                             proxy: proxy,
-                            isPlaying: playingIndices.contains(index)
+                            isPlaying: Binding(
+                                get: { playingIndices.contains(index) },
+                                set: { shouldPlay in
+                                    if shouldPlay {
+                                        playingIndices.insert(index)
+                                    } else {
+                                        playingIndices.remove(index)
+                                    }
+                                }
+                            )
                         )
                         .frame(
                             width: proxy.size.width,
@@ -105,14 +114,14 @@ struct VideoFeedView: View {
                     }
                 }
             }
-
+            
         }
     }
     
     private func videoFeedItem(
         video: Video,
         proxy: GeometryProxy,
-        isPlaying: Bool
+        isPlaying: Binding<Bool>
     ) -> some View {
         ZStack {
             
@@ -123,7 +132,6 @@ struct VideoFeedView: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
             
             VStack {
-                
                 // Top header area
                 VideoFeedAvatarView(
                     avatarURL: video.creator.avatarURL,

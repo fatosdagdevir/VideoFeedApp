@@ -3,24 +3,24 @@
     {
       "id": "239100",
       "creator": { "id": "user1", "name": "laurieblake", "avatarURL": "https://randomuser.me/api/portraits/women/1.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/6010489/6010489-uhd_1440_2560_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/6010489/6010489-uhd_1440_2560_25fps.mp4",
       "description": "Beautiful mountain lake reflection with stunning peaks in the background 🏔️",
       "likes": 1542, "comments": 89
     },
     {
       "id": "239101",
       "creator": { "id": "user2", "name": "alexchen", "avatarURL": "https://randomuser.me/api/portraits/men/2.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/6003421/6003421-uhd_1440_2732_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/6003421/6003421-uhd_1440_2732_25fps.mp4",
       "description": "Sunset vibes hitting different today ✨ #sunset #grateful",
       "likes": 892, "comments": 45
     },
     {
       "id": "239102",
       "creator": { "id": "user3", "name": "maya.travels", "avatarURL": "https://randomuser.me/api/portraits/women/3.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/6010489/6010489-uhd_1440_2560_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/6010489/6010489-uhd_1440_2560_25fps.mp4",
       "description": "Road trip adventures continue! 🚗💨 #roadtrip #wanderlust",
       "likes": 2156, "comments": 127
     },

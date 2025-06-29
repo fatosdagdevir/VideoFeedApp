@@ -16,13 +16,11 @@ struct VideoPlayerView: View {
         }
     }
     
-    let video: Video
-    let isPlaying: Bool
+    @Binding var isPlaying: Bool
     @StateObject private var viewModel: VideoPlayerViewModel
     
-    init(video: Video, isPlaying: Bool) {
-        self.video = video
-        self.isPlaying = isPlaying
+    init(video: Video, isPlaying: Binding<Bool>) {
+        self._isPlaying = isPlaying
         self._viewModel = StateObject(wrappedValue: VideoPlayerViewModel(video: video))
     }
     
@@ -38,26 +36,20 @@ struct VideoPlayerView: View {
             }
         }
         .onAppear {
-            viewModel.setupPlayer()
+            viewModel.loadVideo(autoPlay: isPlaying)
         }
     }
     
     private var player: some View {
         Group {
-            if let player = viewModel.player {
-                VideoPlayer(player: player)
-                    .aspectRatio(contentMode: .fill)
-                    .onAppear {
-                        if isPlaying {
-                            player.play()
-                        } else {
-                            player.pause()
-                        }
-                    }
-                    .onChange(of: isPlaying) { _, play in
-                        play ? player.play() : player.pause()
-                    }
-            }
+            VideoPlayer(player: viewModel.player)
+                .aspectRatio(contentMode: .fill)
+                .onAppear {
+                    viewModel.setPlayback(isPlaying: isPlaying)
+                }
+                .onChange(of: isPlaying) { _, shouldPlay in
+                    viewModel.setPlayback(isPlaying: shouldPlay)
+                }
         }
     }
     
@@ -85,7 +77,7 @@ struct VideoPlayerView: View {
                         .foregroundColor(.white.opacity(0.8))
                     
                     Button("Retry") {
-                        viewModel.setupPlayer()
+                        viewModel.loadVideo(autoPlay: isPlaying)
                     }
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.black)
@@ -109,6 +101,6 @@ struct VideoPlayerView: View {
             likeCount: 100,
             commentCount: 10
         ),
-        isPlaying: true
+        isPlaying: .constant(true)
     )
 }
