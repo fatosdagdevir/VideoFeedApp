@@ -28,6 +28,12 @@ class VideoPlayerViewModel: ObservableObject {
         }
     }
     
+    func loadIfNeeded(autoPlay: Bool) {
+        if viewState == .loading {
+            loadVideo(autoPlay: autoPlay)
+        }
+    }
+    
     func setPlayback(isPlaying: Bool) {
         isPlaying ? player.play() : player.pause()
     }
@@ -49,7 +55,9 @@ class VideoPlayerViewModel: ObservableObject {
                 switch status {
                 case .readyToPlay:
                     self.viewState = .playing
-                    if autoPlay { self.player.play() }
+                    if autoPlay {
+                        self.player.play()
+                    }
                 case .failed, .unknown:
                     self.viewState = .error
                 @unknown default:

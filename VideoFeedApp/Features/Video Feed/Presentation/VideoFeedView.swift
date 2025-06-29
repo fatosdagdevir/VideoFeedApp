@@ -47,20 +47,27 @@ struct VideoFeedView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: .zero) {
                 ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
-                    videoFeedItem(
-                        video: video,
-                        proxy: proxy,
-                        isPlaying: Binding(
-                            get: { playingIndices.contains(index) },
-                            set: { shouldPlay in
-                                if shouldPlay {
-                                    playingIndices.insert(index)
-                                } else {
-                                    playingIndices.remove(index)
+                    ZStack {
+                        // Video Player
+                        VideoPlayerView(
+                            video: video,
+                            isPlaying: Binding(
+                                get: { playingIndices.contains(index) },
+                                set: { shouldPlay in
+                                    if shouldPlay {
+                                        playingIndices.insert(index)
+                                    } else {
+                                        playingIndices.remove(index)
+                                    }
                                 }
-                            }
+                            )
                         )
-                    )
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        
+                        // Header, Caption, Action Items
+                        videoOverlayItems(video: video, proxy: proxy)
+                    }
                     .frame(maxWidth: .infinity)
                     .containerRelativeFrame(.vertical)
                     .background(
@@ -114,49 +121,39 @@ struct VideoFeedView: View {
         .ignoresSafeArea()
     }
     
-    private func videoFeedItem(
+    private func videoOverlayItems(
         video: Video,
-        proxy: GeometryProxy,
-        isPlaying: Binding<Bool>
+        proxy: GeometryProxy
     ) -> some View {
-        ZStack {
-            VideoPlayerView(
-                video: video,
-                isPlaying: isPlaying
+        VStack {
+            // Top header area
+            VideoFeedAvatarView(
+                avatarURL: video.creator.avatarURL,
+                createrName: video.creator.name
             )
-            .aspectRatio(contentMode: .fill)
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            .padding(.top, proxy.safeAreaInsets.top + 4)
             
-            VStack {
-                // Top header area
-                VideoFeedAvatarView(
-                    avatarURL: video.creator.avatarURL,
-                    createrName: video.creator.name
-                )
-                .padding(.top, proxy.safeAreaInsets.top + 4)
+            Spacer()
+            
+            // Bottom content area
+            HStack(alignment: .bottom, spacing: Layout.captionHSpacing) {
+                
+                // Left side - Caption
+                caption(name: video.creator.name, caption: video.caption)
                 
                 Spacer()
                 
-                // Bottom content area
-                HStack(alignment: .bottom, spacing: Layout.captionHSpacing) {
-                    
-                    // Left side - Caption
-                    caption(name: video.creator.name, caption: video.caption)
-                    
-                    Spacer()
-                    
-                    // Right side - Actions
-                    VideoFeedActionView(
-                        likeCount: video.likeCount,
-                        commentCount: video.commentCount,
-                        onLike: {},
-                        onComment: {},
-                        onShare: {}
-                    )
-                }
-                .padding(.horizontal, Layout.bottomContentHPadding)
-                .padding(.bottom, proxy.safeAreaInsets.bottom + 4)
+                // Right side - Actions
+                VideoFeedActionView(
+                    likeCount: video.likeCount,
+                    commentCount: video.commentCount,
+                    onLike: {},
+                    onComment: {},
+                    onShare: {}
+                )
             }
+            .padding(.horizontal, Layout.bottomContentHPadding)
+            .padding(.bottom, proxy.safeAreaInsets.bottom + 4)
         }
     }
     
@@ -177,12 +174,12 @@ struct VideoFeedView: View {
     
     private var loadingView: some View {
         ZStack {
-               Color.black.ignoresSafeArea()
-               ProgressView()
-                   .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                   .scaleEffect(1.5)
-           }
-           .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Color.black.ignoresSafeArea()
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .scaleEffect(1.5)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private var emptyView: some View {

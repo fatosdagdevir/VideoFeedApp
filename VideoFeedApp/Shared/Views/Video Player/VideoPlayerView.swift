@@ -41,16 +41,11 @@ struct VideoPlayerView: View {
     }
     
     private var player: some View {
-        Group {
-            VideoPlayer(player: viewModel.player)
-                .aspectRatio(contentMode: .fill)
-                .onAppear {
-                    viewModel.setPlayback(isPlaying: isPlaying)
-                }
-                .onChange(of: isPlaying) { _, shouldPlay in
-                    viewModel.setPlayback(isPlaying: shouldPlay)
-                }
-        }
+        VideoPlayer(player: viewModel.player)
+            .aspectRatio(contentMode: .fill)
+            .onChange(of: isPlaying) { _, shouldPlay in
+                viewModel.setPlayback(isPlaying: shouldPlay)
+            }
     }
     
     private var loadingView: some View {

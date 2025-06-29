@@ -27,48 +27,48 @@
     {
       "id": "239103",
       "creator": { "id": "user4", "name": "foodie_jake", "avatarURL": "https://randomuser.me/api/portraits/men/4.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/27347914/12120463_1080_1920_60fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/27347914/12120463_1080_1920_60fps.mp4",
       "description": "Homemade pasta from scratch 🍝 #cooking #pasta",
       "likes": 734, "comments": 92
     },
     {
       "id": "239104",
       "creator": { "id": "user5", "name": "fitness_sara", "avatarURL": "https://randomuser.me/api/portraits/women/5.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/31985718/13630581_1440_2560_30fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/31985718/13630581_1440_2560_30fps.mp4",
       "description": "Morning workout complete! 💪 #fitness #motivation",
       "likes": 1823, "comments": 156
     },
     {
       "id": "239105",
       "creator": { "id": "user6", "name": "nature_lover", "avatarURL": "https://randomuser.me/api/portraits/men/6.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/4551881/4551881-hd_1080_1920_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/4551881/4551881-hd_1080_1920_25fps.mp4",
       "description": "Exploring the wild forest! 🌲 #adventure #nature",
       "likes": 1200, "comments": 34
     },
     {
       "id": "239106",
       "creator": { "id": "user7", "name": "urban_explorer", "avatarURL": "https://randomuser.me/api/portraits/women/7.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/4550474/4550474-hd_1080_1920_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/4550474/4550474-hd_1080_1920_25fps.mp4",
       "description": "City lights and late night walks 🌃 #citylife",
       "likes": 980, "comments": 21
     },
     {
       "id": "239107",
       "creator": { "id": "user8", "name": "carfanatic", "avatarURL": "https://randomuser.me/api/portraits/men/8.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/4543684/4543684-hd_1080_1920_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/4543684/4543684-hd_1080_1920_25fps.mp4",
       "description": "Test driving the latest model 🚗 #cars #review",
       "likes": 2100, "comments": 67
     },
     {
       "id": "239108",
       "creator": { "id": "user9", "name": "pet_paradise", "avatarURL": "https://randomuser.me/api/portraits/women/9.jpg" },
-      "shortVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-      "fullVideoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "shortVideoURL": "https://videos.pexels.com/video-files/4551939/4551939-hd_1080_1920_25fps.mp4",
+      "fullVideoURL": "https://videos.pexels.com/video-files/4551939/4551939-hd_1080_1920_25fps.mp4",
       "description": "Puppy playdate at the park 🐶 #dogs #fun",
       "likes": 1345, "comments": 56
     },
