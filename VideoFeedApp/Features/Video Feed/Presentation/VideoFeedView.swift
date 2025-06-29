@@ -24,98 +24,94 @@ struct VideoFeedView: View {
     @State private var playingIndices: Set<Int> = []
     
     var body: some View {
-        Group {
-            switch viewModel.viewState {
-            case .loading:
-                ProgressView()
-            case .ready(let videos):
-                content(videos)
-            case .empty:
-                VStack {
-                    Text("No videos available")
+        GeometryReader { proxy in
+            Group {
+                switch viewModel.viewState {
+                case .loading:
+                    loadingView
+                case .ready(let videos):
+                    content(videos, proxy: proxy)
+                case .empty:
+                    emptyView
+                case .error(let viewModel):
+                    ErrorView(viewModel: viewModel)
                 }
-            case .error(let viewModel):
-                ErrorView(viewModel: viewModel)
             }
-        }
-        .task {
-            await viewModel.loadVideoFeed()
+            .task {
+                await viewModel.loadVideoFeed()
+            }
         }
     }
     
-    private func content(_ videos: [Video]) -> some View {
-        GeometryReader { proxy in
-            ScrollView(showsIndicators: false) {
-                LazyVStack(spacing: .zero) {
-                    ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
-                        videoFeedItem(
-                            video: video,
-                            proxy: proxy,
-                            isPlaying: Binding(
-                                get: { playingIndices.contains(index) },
-                                set: { shouldPlay in
-                                    if shouldPlay {
-                                        playingIndices.insert(index)
-                                    } else {
-                                        playingIndices.remove(index)
-                                    }
+    private func content(_ videos: [Video], proxy: GeometryProxy) -> some View {
+        ScrollView(showsIndicators: false) {
+            LazyVStack(spacing: .zero) {
+                ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
+                    videoFeedItem(
+                        video: video,
+                        proxy: proxy,
+                        isPlaying: Binding(
+                            get: { playingIndices.contains(index) },
+                            set: { shouldPlay in
+                                if shouldPlay {
+                                    playingIndices.insert(index)
+                                } else {
+                                    playingIndices.remove(index)
                                 }
-                            )
-                        )
-                        .frame(
-                            width: proxy.size.width,
-                            height: proxy.size.height + (proxy.safeAreaInsets.bottom / 2)
-                        )
-                        .background(
-                            GeometryReader { innerGeo in
-                                Color.clear
-                                    .preference(key: VideoVisibilityPreferenceKey.self, value: [
-                                        index: calculateVisibilityPercentage(
-                                            itemFrame: innerGeo.frame(in: .global),
-                                            screenHeight: proxy.size.height
-                                        )
-                                    ])
                             }
                         )
-                    }
-                }
-                .scrollTargetLayout()
-                
-                if viewModel.nextPageAvailable || isLoadingMore {
-                    ProgressView()
-                        .tint(.white)
-                        .frame(maxWidth: .infinity, minHeight: 100)
-                        .scaleEffect(1.2)
+                    )
+                    .frame(maxWidth: .infinity)
+                    .containerRelativeFrame(.vertical)
+                    .background(
+                        GeometryReader { innerProxy in
+                            Color.clear
+                                .preference(key: VideoVisibilityPreferenceKey.self, value: [
+                                    index: calculateVisibilityPercentage(
+                                        itemFrame: innerProxy.frame(in: .global),
+                                        screenHeight: proxy.size.height
+                                    )
+                                ])
+                        }
+                    )
                 }
             }
-            .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
-            .background(Color.black)
-            .onPreferenceChange(VideoVisibilityPreferenceKey.self) { values in
-                // Find videos that are at least 50% visible
-                let newPlayingIndices = Set(values.compactMap { (index, percentage) in
-                    percentage >= 0.5 ? index : nil
-                })
-                
-                if newPlayingIndices != playingIndices {
-                    playingIndices = newPlayingIndices
-                }
-                
-                // Update visibleIndex to the most visible video for pagination
-                if let (index, _) = values.max(by: { $0.value < $1.value }) {
-                    visibleIndex = index
-                    
-                    // Trigger pagination when the last video becomes visible
-                    if index == videos.count - 1 && viewModel.nextPageAvailable && !isLoadingMore {
-                        isLoadingMore = true
-                        Task {
-                            await viewModel.loadMore()
-                            isLoadingMore = false
-                        }
-                    }
-                }
+            .scrollTargetLayout()
+            
+            if viewModel.nextPageAvailable || isLoadingMore {
+                ProgressView()
+                    .tint(.white)
+                    .frame(maxWidth: .infinity, minHeight: 100)
+                    .scaleEffect(1.2)
+            }
+        }
+        .background(.black)
+        .scrollTargetBehavior(.paging)
+        .onPreferenceChange(VideoVisibilityPreferenceKey.self) { values in
+            // Find videos that are at least 50% visible
+            let newPlayingIndices = Set(values.compactMap { (index, percentage) in
+                percentage >= 0.5 ? index : nil
+            })
+            
+            if newPlayingIndices != playingIndices {
+                playingIndices = newPlayingIndices
             }
             
+            // Update visibleIndex to the most visible video for pagination
+            if let (index, _) = values.max(by: { $0.value < $1.value }) {
+                visibleIndex = index
+                
+                // Trigger pagination when the last video becomes visible
+                if index == videos.count - 1 && viewModel.nextPageAvailable && !isLoadingMore {
+                    isLoadingMore = true
+                    Task {
+                        await viewModel.loadMore()
+                        isLoadingMore = false
+                    }
+                }
+            }
         }
+        .ignoresSafeArea()
     }
     
     private func videoFeedItem(
@@ -124,12 +120,12 @@ struct VideoFeedView: View {
         isPlaying: Binding<Bool>
     ) -> some View {
         ZStack {
-            
             VideoPlayerView(
                 video: video,
                 isPlaying: isPlaying
             )
-            .frame(width: proxy.size.width, height: proxy.size.height)
+            .aspectRatio(contentMode: .fill)
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             
             VStack {
                 // Top header area
@@ -137,7 +133,7 @@ struct VideoFeedView: View {
                     avatarURL: video.creator.avatarURL,
                     createrName: video.creator.name
                 )
-                .padding(.top, proxy.safeAreaInsets.bottom)
+                .padding(.top, proxy.safeAreaInsets.top + 4)
                 
                 Spacer()
                 
@@ -159,7 +155,7 @@ struct VideoFeedView: View {
                     )
                 }
                 .padding(.horizontal, Layout.bottomContentHPadding)
-                .padding(.bottom, proxy.safeAreaInsets.top)
+                .padding(.bottom, proxy.safeAreaInsets.bottom + 4)
             }
         }
     }
@@ -177,6 +173,26 @@ struct VideoFeedView: View {
                 .shadow(color: .black.opacity(0.8), radius: 1)
                 .lineLimit(Layout.captionLineLimit)
         }
+    }
+    
+    private var loadingView: some View {
+        ZStack {
+               Color.black.ignoresSafeArea()
+               ProgressView()
+                   .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                   .scaleEffect(1.5)
+           }
+           .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var emptyView: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            Text("No videos available")
+                .font(.headline)
+                .foregroundColor(.white.opacity(0.8))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private func calculateVisibilityPercentage(itemFrame: CGRect, screenHeight: CGFloat) -> Double {

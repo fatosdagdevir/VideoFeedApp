@@ -20,8 +20,6 @@ class VideoPlayerViewModel: ObservableObject {
             return
         }
         
-        viewState = .loading
-        
         let item = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: item)
         
