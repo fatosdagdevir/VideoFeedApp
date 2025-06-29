@@ -14,7 +14,7 @@ class VideoPlayerViewModel: ObservableObject {
         self.video = video
     }
     
-    func loadVideo(autoPlay: Bool) {
+    func loadVideo(autoPlay: Bool = false) {
         guard let url = URL(string: video.shortVideoURL) else {
             viewState = .error
             return
@@ -25,12 +25,6 @@ class VideoPlayerViewModel: ObservableObject {
         
         Task {
             await observeStatus(of: item, autoPlay: autoPlay)
-        }
-    }
-    
-    func loadIfNeeded(autoPlay: Bool) {
-        if viewState == .loading {
-            loadVideo(autoPlay: autoPlay)
         }
     }
     
