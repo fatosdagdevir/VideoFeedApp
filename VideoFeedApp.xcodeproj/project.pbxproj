@@ -256,11 +256,9 @@
 		BB2703B42E0C1E0F00A5F9A4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BBB7F2FE2E128ECA00BD3A7F /* Views */,
 				BB2703A92E0C1B1F00A5F9A4 /* VideoFeedCoordinator.swift */,
 				BB2703AB2E0C1B4B00A5F9A4 /* VideoFeedViewModel.swift */,
-				BB2703982E0AFCEF00A5F9A4 /* VideoFeedView.swift */,
-				BB58B4872E0DFB380073530D /* VideoFeedActionView.swift */,
-				BB58B4892E0DFD310073530D /* VideoFeedAvatarView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -281,6 +279,16 @@
 				BB58B4902E0F3B690073530D /* VideoPlayerViewModelTests.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		BBB7F2FE2E128ECA00BD3A7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB58B4892E0DFD310073530D /* VideoFeedAvatarView.swift */,
+				BB58B4872E0DFB380073530D /* VideoFeedActionView.swift */,
+				BB2703982E0AFCEF00A5F9A4 /* VideoFeedView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BBDDA79D2E0C9458001FB4E4 /* Shared */ = {
